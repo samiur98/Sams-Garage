@@ -4,7 +4,6 @@ import com.garage.sam.backend.Repository.UserRepository;
 import com.garage.sam.backend.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -31,5 +30,25 @@ public class UserService {
        return 201;
     }
 
+    public int updatePassword(String username, String password) {
+        User user = this.userRepository.findByUsername(username);
+        if(user == null) {
+            return 403;
+        }
+        user.setPassword(password);
+        this.userRepository.save(user);
+        return 200;
+    }
 
+    public int updateContact(String username, String email, String phone, String preferedMethod) {
+        User user = this.userRepository.findByUsername(username);
+        if(user == null) {
+            return 403;
+        }
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setPreferedMethod(preferedMethod);
+        this.userRepository.save(user);
+        return 200;
+    }
 }

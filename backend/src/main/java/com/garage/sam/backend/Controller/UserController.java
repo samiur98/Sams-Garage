@@ -4,9 +4,7 @@ import com.garage.sam.backend.Model.User;
 import com.garage.sam.backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -31,7 +29,7 @@ public class UserController {
         String password = user.getPassword();
         String email = user.getEmail();
         String phone = user.getPhone();
-        String preferedMethod = user.getPreferedMethod();
+
         if((username == null) || (password == null)) {
             return 403;
         }
@@ -39,5 +37,34 @@ public class UserController {
             return 403;
         }
         return this.userService.postUser(user);
+    }
+
+    @PostMapping("/updatePassword")
+    public int updatePassword(@RequestBody User user) {
+        String username = user.getUsername();
+        String password = user.getPassword();
+        if((username == null) || (password == null)) {
+            return 403;
+        }
+        return this.userService.updatePassword(username, password);
+    }
+
+    @PostMapping("/updateContact")
+    public int updateContact(@RequestBody User user) {
+        String username = user.getUsername();
+        String email = user.getEmail();
+        String phone = user.getPhone();
+        String preferedMethod = user.getPreferedMethod();
+
+        if(username == null) {
+            return 403;
+        }
+        if((email == null) && (phone == null)) {
+           return 403;
+        }
+        if(preferedMethod == null) {
+           return 403;
+        }
+        return this.userService.updateContact(username, email, phone, preferedMethod);
     }
 }
