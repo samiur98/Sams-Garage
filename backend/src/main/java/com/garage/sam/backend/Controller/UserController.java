@@ -20,7 +20,11 @@ public class UserController {
     @PostMapping("/getUser")
     public User getUser(@RequestBody User user) {
         String username = user.getUsername();
-        return this.userService.getUser(username);
+        String password = user.getPassword();
+        if((username == null) || (password == null)) {
+            return null;
+        }
+        return this.userService.getUser(username, password);
     }
 
     @PostMapping("/postUser")

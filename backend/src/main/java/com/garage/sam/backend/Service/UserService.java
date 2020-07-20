@@ -3,6 +3,7 @@ package com.garage.sam.backend.Service;
 import com.garage.sam.backend.Repository.UserRepository;
 import com.garage.sam.backend.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,13 +12,25 @@ import java.util.Collection;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public Collection<User> getUsers() {
+        String password = "password";
+        String hashedPassword = this.passwordEncoder.encode(password);
+        System.out.println(this.passwordEncoder.matches("password", hashedPassword));
+        System.out.println(this.passwordEncoder.matches("notpassword", hashedPassword));
         return this.userRepository.findAll();
     }
 
-    public User getUser(String username) {
-        return this.userRepository.findByUsername(username);
+    public User getUser(String username, String password) {
+        User user = this.userRepository.findByUsername(username);
+        if(user == null) {
+            return null;
+        }
+        if(this.passwordEncoder.matches(password, user.getPassword())){
+            return user;
+        }
+        return null;
     }
 
     public int postUser(User user) {
@@ -25,6 +38,7 @@ public class UserService {
        if(this.userRepository.findByUsername(username) != null) {
            return 403;
        }
+       user.setPassword(this.passwordEncoder.encode(user.getPassword()));
        user.setListing(new ArrayList());
        this.userRepository.save(user);
        return 201;
@@ -35,7 +49,7 @@ public class UserService {
         if(user == null) {
             return 403;
         }
-        user.setPassword(password);
+        user.setPassword(this.passwordEncoder.encode(password));
         this.userRepository.save(user);
         return 200;
     }
