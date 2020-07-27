@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 
-class Home extends React.Component {
+class ChangePassword extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,10 +24,10 @@ class Home extends React.Component {
                 history = {this.props.history}
                 state = {this.state}
                 />
-                <h3>Home</h3>
+                <h3>ChangePassword</h3>
             </div>
         );
     }
 }
 
-export default Home;
+export default ChangePassword;

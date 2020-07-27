@@ -8,6 +8,7 @@
     text-align: center;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 60px;
+    cursor: default;
 }
 
 .header-flex-container{

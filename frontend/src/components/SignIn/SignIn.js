@@ -1,20 +1,31 @@
 import React from 'react';
 import Header from '../Header/Header';
 
-class Home extends React.Component {
+class SignIn extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             signedIn: false,
             userData: {}
+            
         }
+        this.onSignIn = this.onSignIn.bind(this);
     }
 
     componentDidMount() {
-        console.log(this.props);
         if(this.props.location.state) {
             this.setState(() => this.props.location.state); 
         } 
+    }
+
+    onSignIn() {
+        const state = {
+            signedIn: true,
+            userData: {
+                name: 'Shah'
+            }
+        }
+        this.props.history.replace('/', state);
     }
 
     render() {
@@ -24,10 +35,10 @@ class Home extends React.Component {
                 history = {this.props.history}
                 state = {this.state}
                 />
-                <h3>Home</h3>
+                <button onClick = {this.onSignIn}>SignIn</button>
             </div>
         );
     }
 }
 
-export default Home;
+export default SignIn;
