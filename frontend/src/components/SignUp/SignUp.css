@@ -1,0 +1,81 @@
+
+.signup-form{
+    background-color: white;
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    text-align: center;
+    justify-self: center;
+    border: 2px solid maroon;
+    width: 800px;
+}
+
+.signup-form input[type=text] {
+    background-color: white;
+    width: 500px;
+    height: 25px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    border: 1px solid maroon;
+    margin: 8px;
+}
+
+.signup-form input[type=password] {
+    background-color: white;
+    width: 500px;
+    height: 25px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    border: 1px solid maroon;
+    margin: 8px;
+    color: maroon
+}
+
+.signup-form select{
+    width: 300px;
+    height: 25px;
+    border: 1px maroon solid;
+    margin: 8px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.signup-form label{
+    font-size: 20px;
+    color: maroon;
+    padding: 2px;
+}
+
+.signup-form button {
+    width: 380px;
+    height: 50px;
+    background-color: maroon;
+    color: white;
+    border: 1px solid maroon;
+    margin: 15px;
+    font-size: 21px;
+}
+
+.signup-form button:hover {
+    background-color: white;
+    color: maroon;
+    border: 2px solid maroon;
+    cursor: pointer;
+}
+
+.signup-form button:active {
+    background-color: maroon;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.signup {
+    position: relative;
+    top: 150px;
+    color: navy;
+    text-align: center;
+}

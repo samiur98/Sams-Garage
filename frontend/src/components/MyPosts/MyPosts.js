@@ -11,7 +11,6 @@ class MyPosts extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
         if(this.props.location.state) {
             this.setState(() => this.props.location.state); 
         } 

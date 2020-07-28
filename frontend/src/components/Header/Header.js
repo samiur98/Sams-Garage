@@ -9,7 +9,11 @@ class Header extends React.Component {
     }
 
     onSwitch(path) {
-        this.props.history.replace(path, this.props.state);
+        const state = {
+            signedIn: this.props.state.signedIn,
+            userData: this.props.state.userData
+        }
+        this.props.history.replace(path, state);
     }
 
     onSignOut() {
