@@ -36,7 +36,7 @@ public class UserService {
     public int postUser(User user) {
        String username = user.getUsername();
        if(this.userRepository.findByUsername(username) != null) {
-           return 403;
+           return 400;
        }
        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
        user.setListing(new ArrayList());

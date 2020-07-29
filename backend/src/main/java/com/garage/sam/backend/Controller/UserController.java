@@ -8,9 +8,11 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin("*")
 public class UserController {
     @Autowired
     private UserService userService;
+    private static final String corsOrigin = "http://localhost:3000";
 
     @GetMapping
     public Collection<User> getUsers() {
@@ -18,6 +20,7 @@ public class UserController {
     }
 
     @PostMapping("/getUser")
+    @CrossOrigin("*")
     public User getUser(@RequestBody User user) {
         String username = user.getUsername();
         String password = user.getPassword();
@@ -27,6 +30,12 @@ public class UserController {
         return this.userService.getUser(username, password);
     }
 
+    @GetMapping("/ja")
+    public int getJa(){
+        return 0;
+    }
+
+    @CrossOrigin("*")
     @PostMapping("/postUser")
     public int postUser(@RequestBody User user) {
         String username = user.getUsername();

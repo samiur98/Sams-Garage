@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
 import SignInView from './SignInView';
+import axios from 'axios';
 
 class SignIn extends React.Component {
     constructor(props) {
@@ -35,7 +36,41 @@ class SignIn extends React.Component {
     }
 
     onSignIn() {
-        console.log(this.state);
+        if(this.state.username.length <= 4) {
+            return;
+        }
+        if(this.state.password.length < 8) {
+            return;
+        }
+        this.getUserRequest();
+    }
+
+    getUserRequest() {
+        const signInInfo = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        const history = this.props.history;
+
+        axios({
+            method: 'post',
+            timeout: 5000,
+            url: 'http://localhost:8080/users/getUser',
+            data: JSON.stringify(signInInfo),
+            headers:{'Content-Type': 'application/json; charset=utf-8'}
+        }).then(res => {
+            if(res.data) {
+                let userInfo = {
+                    signedIn: true,
+                    userData: res.data
+                }
+                history.replace('/', userInfo);
+            } else {
+                alert('Username and/or password incorrect.');
+            }
+        }).catch(error => {
+            console.error(error);
+        })
     }
 
     render() {

@@ -22,7 +22,7 @@ function SignUpForm(props) {
     const passwordMessage = getPasswordMessage(props.state.password);
 
     return(
-        <form className = 'signup-form' onSubmit = { props.onFormSubmit } >
+        <div className = 'signup-form'>
             <p>{ usernameMessage }</p>
             <p>{ passwordMessage }</p>
 
@@ -64,8 +64,8 @@ function SignUpForm(props) {
                 </select>
             </div>
 
-            <button>SignUp</button>
-        </form>
+            <button onClick = { props.onFormSubmit }>SignUp</button>
+        </div>
         
     );
 }
