@@ -44,12 +44,15 @@ public class UserService {
        return 201;
     }
 
-    public int updatePassword(String username, String password) {
+    public int updatePassword(String username, String oldPassword, String newPassword) {
         User user = this.userRepository.findByUsername(username);
         if(user == null) {
-            return 403;
+            return 404;
         }
-        user.setPassword(this.passwordEncoder.encode(password));
+        if(!this.passwordEncoder.matches(oldPassword, user.getPassword())) {
+            return 400;
+        }
+        user.setPassword(this.passwordEncoder.encode(newPassword));
         this.userRepository.save(user);
         return 200;
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
-import ChangeContactForm from './ChangeContactForm.js'
+import ChangeContactForm from './ChangeContactForm.js';
+import axios from 'axios';
 
 class ChangeContactInfo extends React.Component {
     constructor(props) {
@@ -29,8 +30,39 @@ class ChangeContactInfo extends React.Component {
     }
 
     onSubmit() {
-        const a = this.state.email + ' ' + this.state.phoneNumber + ' ' + this.state.preferedMethod;
-        alert(a);
+        if((this.state.email.length <= 0) && (this.state.phoneNumber.length <= 0)) {
+            alert('At least one contact info(email or phone number) must be provided');
+            return;
+        }
+        this.updateContactRequest();
+    }
+
+    updateContactRequest() {
+        const contactInfo = {
+            username: this.state.userData.username,
+            email: this.state.email,
+            phone: this.state.phoneNumber,
+            preferedMethod: this.state.preferedMethod
+        }
+        const failureMessage = 'Contact Info cannot be updated at this time, please try again later.';
+        
+        axios({
+            method: 'post',
+            timeout: 5000,
+            url: 'http://localhost:8080/users/updateContact',
+            data: JSON.stringify(contactInfo),
+            headers:{'Content-Type': 'application/json; charset=utf-8'}
+        }).then(res => {
+            if(res.data === 200) {
+                alert('Contact Info successfully updated.')
+            }
+            if(res.data === 403) {
+                alert(failureMessage);
+            }
+        }).catch(error => {
+            console.error(error);
+            alert(failureMessage);
+        })
     }
 
     render() {

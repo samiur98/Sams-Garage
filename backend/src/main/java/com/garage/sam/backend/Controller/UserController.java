@@ -1,5 +1,6 @@
 package com.garage.sam.backend.Controller;
 
+import com.garage.sam.backend.Model.PasswordChange;
 import com.garage.sam.backend.Model.User;
 import com.garage.sam.backend.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,6 @@ public class UserController {
         return this.userService.getUser(username, password);
     }
 
-    @GetMapping("/ja")
-    public int getJa(){
-        return 0;
-    }
-
     @CrossOrigin("*")
     @PostMapping("/postUser")
     public int postUser(@RequestBody User user) {
@@ -53,17 +49,19 @@ public class UserController {
     }
 
     @PostMapping("/updatePassword")
-    public int updatePassword(@RequestBody User user) {
-        String username = user.getUsername();
-        String password = user.getPassword();
-        if((username == null) || (password == null)) {
+    public int updatePassword(@RequestBody PasswordChange passwordChange) {
+        String username = passwordChange.getUsername();
+        String oldPassword = passwordChange.getOldPassword();
+        String newPassword = passwordChange.getNewPassword();
+        if((username == null) || (oldPassword == null) || (newPassword == null)) {
             return 403;
         }
-        return this.userService.updatePassword(username, password);
+        return this.userService.updatePassword(username, oldPassword, newPassword);
     }
 
     @PostMapping("/updateContact")
     public int updateContact(@RequestBody User user) {
+
         String username = user.getUsername();
         String email = user.getEmail();
         String phone = user.getPhone();

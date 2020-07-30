@@ -3,7 +3,7 @@ import './ChangeContact.css';
 
 function ChangeContactForm(props) {
     return(
-        <form className = 'change-contact-form' onSubmit = { props.onSubmit }>
+        <div className = 'change-contact-form'>
             <input
             type = 'text'
             placeholder = 'Email'
@@ -28,8 +28,8 @@ function ChangeContactForm(props) {
                 </select>
             </div>
 
-            <button>Submit</button>
-        </form>
+            <button onClick = { props.onSubmit }>Submit</button>
+        </div>
     );
 }
 

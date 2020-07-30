@@ -51,7 +51,7 @@ class SignIn extends React.Component {
             password: this.state.password
         }
         const history = this.props.history;
-
+        const failuerMessage = 'Cannot process request at this time, please try again later.'
         axios({
             method: 'post',
             timeout: 5000,
@@ -70,6 +70,7 @@ class SignIn extends React.Component {
             }
         }).catch(error => {
             console.error(error);
+            alert(failuerMessage);
         })
     }
 
