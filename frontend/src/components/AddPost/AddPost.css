@@ -1,0 +1,59 @@
+.addpost {
+    background-color: white;
+    position: relative;
+    top: 200px;
+    border: 1px solid maroon;
+    text-align: center;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.addpost input[type=text]{
+    text-align: center;
+    width: 400px;
+    height: 40px;
+    border: 1px solid maroon;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 19px;
+}
+
+.addpost h3{
+    color: maroon;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    cursor: default;
+}
+
+.addpost label{
+    color: maroon;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    margin: 5px;
+    margin-right: 2px;
+}
+
+.addpost button{
+    background-color: maroon;
+    color: white;
+    font-size: 21px;
+    border: 1px solid maroon;
+    margin: 10px;
+    margin-top: 30px;
+    width: 300px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.addpost button:hover{
+    background-color: white;
+    color: maroon;
+}
+
+.addpost button:active{
+    background-color: maroon;
+    color: white;
+}

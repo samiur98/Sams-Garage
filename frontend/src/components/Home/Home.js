@@ -1,5 +1,7 @@
 import React from 'react';
 import Header from '../Header/Header';
+import {oneElement, fiveElements, tenElements} from '../fakeData';
+import SearchResultView from '../SearchResult/SearchResultView';
 
 class Home extends React.Component {
     constructor(props) {
@@ -13,17 +15,23 @@ class Home extends React.Component {
     componentDidMount() {
         if(this.props.location.state) {
             this.setState(() => this.props.location.state); 
-        } 
+        }
+        console.log(oneElement);
+        console.log(fiveElements);
+        console.log(tenElements);
     }
 
     render() {
         return(
             <div>
                 <Header 
-                history = {this.props.history}
-                state = {this.state}
+                history = { this.props.history }
+                state = { this.state }
                 />
-                <h3>Home</h3>
+                <SearchResultView 
+                displayArray = {fiveElements}
+                deleteMode = { true }
+                />
             </div>
         );
     }

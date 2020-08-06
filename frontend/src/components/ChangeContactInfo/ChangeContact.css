@@ -5,7 +5,7 @@
     left: 300px;
     text-align: center;
     justify-self: center;
-    border: 2px solid maroon;
+    border: 1px solid maroon;
     width: 800px;
 }
 
@@ -14,7 +14,6 @@
     width: 500px;
     height: 25px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 19px;
     border: 1px solid maroon;
     margin: 8px;

@@ -1,5 +1,5 @@
 .header h1{
-    position: fixed;
+    position: absolute;
     top: 0px;
     left: 0px;
     width: 100%;
@@ -12,7 +12,7 @@
 }
 
 .header-flex-container{
-    position: fixed;
+    position: absolute;
     top: 120px;
     left: 0px;
     width: 100%;
