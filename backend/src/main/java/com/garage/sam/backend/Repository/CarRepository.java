@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface CarRepository extends MongoRepository<Car, String> {
     List findByUsername(String username);
-    List findByTitle(String title);
+    List findByMetaData(String metaData);
 }

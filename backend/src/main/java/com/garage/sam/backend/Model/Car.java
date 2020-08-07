@@ -8,8 +8,8 @@ public class Car {
     @Id
     private String id;
     private String title;
+    private String metaData;
     private Integer price;
-    private Integer year;
     private Integer mileage;
     private Integer doors;
     private String transmission;
@@ -17,11 +17,11 @@ public class Car {
     private String color;
     private String username;
 
-    public Car(String title, Integer price, Integer year, Integer mileage, Integer doors,
+    public Car(String title, String metaData, Integer price, Integer mileage, Integer doors,
                String transmission, Integer seats, String color, String username) {
         this.title = title;
+        this.metaData = metaData; // "[year] [make] [model]"
         this.price = price;
-        this.year = year;
         this.mileage = mileage;
         this.doors = doors;
         this.transmission = transmission;
@@ -40,13 +40,14 @@ public class Car {
         return this.title;
     }
 
+    public String getMetaData() {
+        return this.metaData;
+    }
+
     public Integer getPrice() {
         return this.price;
     }
 
-    public Integer getYear() {
-        return this.year;
-    }
 
     public Integer getMileage() {
         return this.mileage;
@@ -78,12 +79,12 @@ public class Car {
         this.title = title;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setMetaData(String metaData) {
+        this.metaData = metaData;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public void setMileage(Integer mileage) {

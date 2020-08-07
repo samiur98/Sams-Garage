@@ -9,6 +9,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/listings")
+@CrossOrigin("*")
 public class ListingController {
     @Autowired
     private ListingService listingService;
@@ -28,9 +29,14 @@ public class ListingController {
         return this.listingService.getListingByUsername(username);
     }
 
-    @GetMapping("/getByTitle")
-    public Collection getListingByTitle(@RequestParam String title) {
-        return this.listingService.getListingByTitle(title);
+    @GetMapping("/getByMetaData")
+    public Collection getListingByTitle(@RequestParam String metaData) {
+        return this.listingService.getListingByMetaData(metaData);
+    }
+
+    @GetMapping("/getRandomFive")
+    public Collection getRandomFive() {
+        return this.listingService.getFiveRandomListings();
     }
 
     @PostMapping("/postListing")

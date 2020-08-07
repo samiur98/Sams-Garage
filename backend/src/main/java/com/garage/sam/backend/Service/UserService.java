@@ -15,14 +15,13 @@ public class UserService {
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public Collection<User> getUsers() {
-        String password = "password";
-        String hashedPassword = this.passwordEncoder.encode(password);
-        System.out.println(this.passwordEncoder.matches("password", hashedPassword));
-        System.out.println(this.passwordEncoder.matches("notpassword", hashedPassword));
+        // Returns all users in the database.
         return this.userRepository.findAll();
     }
 
     public User getUser(String username, String password) {
+        // Returns User based on username and password, null if no such user exists.
+
         User user = this.userRepository.findByUsername(username);
         if(user == null) {
             return null;
@@ -34,6 +33,8 @@ public class UserService {
     }
 
     public int postUser(User user) {
+        // Adds user to the database.
+
        String username = user.getUsername();
        if(this.userRepository.findByUsername(username) != null) {
            return 400;
@@ -45,6 +46,8 @@ public class UserService {
     }
 
     public int updatePassword(String username, String oldPassword, String newPassword) {
+        // Updates a user's password.
+
         User user = this.userRepository.findByUsername(username);
         if(user == null) {
             return 404;
@@ -58,6 +61,8 @@ public class UserService {
     }
 
     public int updateContact(String username, String email, String phone, String preferedMethod) {
+        // Updates a user's contact information.
+
         User user = this.userRepository.findByUsername(username);
         if(user == null) {
             return 403;
