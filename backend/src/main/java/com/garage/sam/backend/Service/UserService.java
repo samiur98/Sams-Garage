@@ -32,6 +32,16 @@ public class UserService {
         return null;
     }
 
+    public User getUserOverview(String username) {
+        // Returns a user object with the password field set to null, meant to provide information about user that is not sensitive.
+        User user = this.userRepository.findByUsername(username);
+        if(user == null) {
+            return null;
+        }
+        user.setPassword(null);
+        return user;
+    }
+
     public int postUser(User user) {
         // Adds user to the database.
 
@@ -40,7 +50,6 @@ public class UserService {
            return 400;
        }
        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
-       user.setListing(new ArrayList());
        this.userRepository.save(user);
        return 201;
     }

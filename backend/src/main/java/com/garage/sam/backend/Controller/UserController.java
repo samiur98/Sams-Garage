@@ -31,6 +31,11 @@ public class UserController {
         return this.userService.getUser(username, password);
     }
 
+    @GetMapping("/getUserOverview")
+    public User getUserOverview(@RequestParam String username) {
+        return this.userService.getUserOverview(username);
+    }
+
     @CrossOrigin("*")
     @PostMapping("/postUser")
     public int postUser(@RequestBody User user) {

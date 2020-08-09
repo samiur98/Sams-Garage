@@ -14,6 +14,7 @@ function PostView(props) {
             make = { props.make }
             model = { props.model }
             year = { props.year }
+            mileage = { props.mileage }
             color = { props.color }
             seats = { props.seats }
             doors = { props.doors }
@@ -22,10 +23,10 @@ function PostView(props) {
             />
 
             <OwnerInformation 
-            username = { props.owner.username }
-            email = { props.owner.email }
-            phone = { props.owner.phone }
-            preferedMethod = { props.owner.preferedMethod }
+            username = { props.user.username }
+            email = { props.user.email }
+            phone = { props.user.phone }
+            preferedMethod = { props.user.preferedMethod }
             />
         </div>
     );
@@ -52,6 +53,7 @@ function VehicleInformation(props) {
     let seats = null;
     let doors = null;
     let transmission = null;
+    let mileage = null;
     let price = null;
 
     if(props.make) {
@@ -66,10 +68,10 @@ function VehicleInformation(props) {
     if(props.color) {
         color = 'Color: ' + props.color;
     }
-    if(props.seats > 0) {
+    if(props.seats) {
         seats = 'Seats: ' + props.seats;
     }
-    if(props.doors > 0) {
+    if(props.doors) {
         doors = 'Doors: ' + props.doors;
     }
     if(props.transmission) {
@@ -77,6 +79,9 @@ function VehicleInformation(props) {
     }
     if(props.price) {
         price = 'Price: $' + props.price;
+    }
+    if(props.mileage) {
+        mileage = 'Mileage: ' + props.mileage + ' miles';
     }
 
     return(
@@ -89,6 +94,7 @@ function VehicleInformation(props) {
             <h5>{ seats }</h5>
             <h5>{ doors }</h5>
             <h5>{ transmission }</h5>
+             <h5>{ mileage }</h5>
             <h5>{ price }</h5>
         </div>
     );

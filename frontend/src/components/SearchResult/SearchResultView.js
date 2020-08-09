@@ -3,8 +3,8 @@ import noImage from '../images/noImage.png';
 import './SearchResult.css';
 
 function searchResultView(props) {
-    const commponentArray = getComponentArray(props.displayArray, props.deleteMode);
-    const bottomNav = getBottomNav();
+    const commponentArray = getComponentArray(props.displayArray, props.deleteMode, props.onLinkClick);
+    const bottomNav = getBottomNav(props.next, props.prev, props.onNext, props.onPrev);
     return(
     <div className='searchresult'>
         { commponentArray }
@@ -13,21 +13,21 @@ function searchResultView(props) {
     );
 }
 
-function getComponentArray(displayArray, deleteMode) {
+function getComponentArray(displayArray, deleteMode, onLinkClick) {
     const result = [];
     for(let i = 0; i < displayArray.length; i++) {
-        result.push(getListingContainer(displayArray[i], deleteMode));
+        result.push(getListingContainer(displayArray[i], deleteMode, onLinkClick));
     }
     return result;
 }
 
-function getListingContainer(listing, deleteMode) {
+function getListingContainer(listing, deleteMode, onLinkClick) {
     const title = listing.title;
     let price = listing.price;
-    const owner = listing.owner;
+    const username = listing.username;
     let deleteButton = null;
 
-    if(!(title && price && owner)) {
+    if(!(title && price && username)) {
         return;
     }
     if(deleteMode) {
@@ -36,27 +36,34 @@ function getListingContainer(listing, deleteMode) {
 
     price = '$' + price;
     return(
-        <div className='searchresultgrid'>
+        <div className = 'searchresultgrid' key = { listing.id }>
             <img 
             src = { noImage }
             alt = 'Unavailable'>
             </img>
 
-            <h3>{ title }</h3>
+            <h3 onClick = { () => onLinkClick(listing) }>{ title }</h3>
             <h4>{ price }</h4>
-            <h5>{ owner }</h5>
+            <h5>{ username }</h5>
             { deleteButton }
         </div>
     );
 }
 
-function getBottomNav() {
-    const prev = <button>Prev</button>;
-    const next = <button>Next</button>;
+function getBottomNav(next, prev, onNext, onPrev) {
+    let prevButton = <button onClick = { onPrev }>Prev</button>;
+    let nextButton = <button onClick = { onNext }>Next</button>;
+    if(!next) {
+        nextButton = null;
+    }
+    if(!prev) {
+        prevButton = null;
+    }
+
     return(
         <div className='searchresultbottom'>
-            { prev }
-            { next }
+            { prevButton }
+            { nextButton }
         </div>
     );
 }

@@ -45,7 +45,6 @@ public class ListingService {
             Car randomCar = ((List<Car>) allEntries).remove(randomIndex);
             result.add(randomCar);
         }
-
         return result;
     }
 

@@ -10,6 +10,7 @@ import ChangePassword from './components/ChangePassword/ChangePassword';
 import ChangeContactInfo from './components/ChangeContactInfo/ChangeContactInfo';
 import AddPost from './components/AddPost/AddPost';
 import Post from './components/Post/Post';
+import SearchResult from './components/SearchResult/SearchResult';
 import './App.css';
 
 class App extends React.Component {
@@ -28,6 +29,7 @@ class App extends React.Component {
           <Route component = { ChangeContactInfo } exact path = '/changecontactinfo' />
           <Route component = { AddPost } exact path = '/addpost' />
           <Route component = { Post } exact path = '/post' />
+          <Route component = { SearchResult } exact path = '/searchresult' />
         </Switch>
       </div>
     );

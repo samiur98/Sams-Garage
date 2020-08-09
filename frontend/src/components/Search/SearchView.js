@@ -25,7 +25,7 @@ function SearchView(props) {
             onChange = { props.onInputChange }
             />
 
-            <button>Search</button>
+            <button onClick = { props.onSearch }>Search</button>
         </div>
     );
 }

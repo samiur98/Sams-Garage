@@ -13,7 +13,6 @@ public class User {
     private String email;
     private String phone;
     private String preferedMethod;
-    private List listing;
 
     public User(String username, String password, String email,
                 String phone, String preferedMethod) {
@@ -50,9 +49,6 @@ public class User {
         return this.preferedMethod;
     }
 
-    public List getListing() {
-        return this.listing;
-    }
 
     // Setters
 
@@ -76,7 +72,4 @@ public class User {
         this.preferedMethod = preferedMethod;
     }
 
-    public void setListing(List listing) {
-        this.listing = listing;
-    }
 }

@@ -1,6 +1,7 @@
 package com.garage.sam.backend.Controller;
 
 import com.garage.sam.backend.Model.Car;
+import com.garage.sam.backend.Model.MetaData;
 import com.garage.sam.backend.Service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,9 +30,10 @@ public class ListingController {
         return this.listingService.getListingByUsername(username);
     }
 
-    @GetMapping("/getByMetaData")
-    public Collection getListingByTitle(@RequestParam String metaData) {
-        return this.listingService.getListingByMetaData(metaData);
+    @PostMapping("/getByMetaData")
+    public Collection getListingByTitle(@RequestBody MetaData metaData) {
+        String metaDataString = metaData.getYear() + ' ' + metaData.getMake() + ' ' + metaData.getModel();
+        return this.listingService.getListingByMetaData(metaDataString);
     }
 
     @GetMapping("/getRandomFive")
