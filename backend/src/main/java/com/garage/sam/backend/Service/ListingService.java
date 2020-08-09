@@ -71,6 +71,7 @@ public class ListingService {
 
         if((username == null) || (title == null) || (mileage == null) ||
                 (price == null) || (metaData == null)) {
+            System.out.println("here");
             return 403;
         }
         this.carRepository.save(car);

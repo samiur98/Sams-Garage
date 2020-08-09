@@ -3,7 +3,7 @@ import noImage from '../images/noImage.png';
 import './SearchResult.css';
 
 function searchResultView(props) {
-    const commponentArray = getComponentArray(props.displayArray, props.deleteMode, props.onLinkClick);
+    const commponentArray = getComponentArray(props.displayArray, props.deleteMode, props.onLinkClick, props.onDelete);
     const bottomNav = getBottomNav(props.next, props.prev, props.onNext, props.onPrev);
     return(
     <div className='searchresult'>
@@ -13,15 +13,15 @@ function searchResultView(props) {
     );
 }
 
-function getComponentArray(displayArray, deleteMode, onLinkClick) {
+function getComponentArray(displayArray, deleteMode, onLinkClick, onDelete) {
     const result = [];
     for(let i = 0; i < displayArray.length; i++) {
-        result.push(getListingContainer(displayArray[i], deleteMode, onLinkClick));
+        result.push(getListingContainer(displayArray[i], deleteMode, onLinkClick, onDelete));
     }
     return result;
 }
 
-function getListingContainer(listing, deleteMode, onLinkClick) {
+function getListingContainer(listing, deleteMode, onLinkClick, onDelete) {
     const title = listing.title;
     let price = listing.price;
     const username = listing.username;
@@ -31,7 +31,7 @@ function getListingContainer(listing, deleteMode, onLinkClick) {
         return;
     }
     if(deleteMode) {
-        deleteButton = <button>Delete</button>
+        deleteButton = <button onClick = { () => onDelete(listing) }>Delete</button>
     }
 
     price = '$' + price;

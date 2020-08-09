@@ -38,6 +38,13 @@ function AddPostView(props) {
             name = 'price'
             onChange = { props.onInputChange }
             />
+            
+            <input 
+            type = 'text'
+            placeholder = 'Mileage in miles'
+            name = 'mileage'
+            onChange = { props.onInputChange }
+            />
 
             <h3>Optional Information</h3>
 
@@ -51,7 +58,7 @@ function AddPostView(props) {
             <div>
                 <label>Seats</label>
                 <select onChange = { props.onInputChange } name = 'seats'>
-                    <option value = { -1 }>Unspecify</option>
+                    <option value = { 0 }>Unspecify</option>
                     <option value = { 1 }>1</option>
                     <option value = { 2 }>2</option>
                     <option value = { 3 }>3</option>
@@ -66,7 +73,7 @@ function AddPostView(props) {
 
                 <label>Doors</label>
                 <select onChange = { props.onInputChange } name = 'doors'>
-                    <option value = { -1 }>Unspecify</option>
+                    <option value = { 0 }>Unspecify</option>
                     <option value = { 2 }>2</option>
                     <option value = { 4 }>4</option>
                 </select>
@@ -80,7 +87,7 @@ function AddPostView(props) {
                 </select>
             </div>
 
-            <button>Submit</button>
+            <button onClick = { props.onSubmit }>Submit</button>
         </div>
     );
 }

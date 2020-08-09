@@ -68,6 +68,10 @@ class Search extends React.Component {
             make: this.state.make,
             model: this.state.model
         };
+        const history = this.props.history;
+        const signedIn = this.state.signedIn;
+        const userData = this.state.userData;
+
         axios({
             method: 'post',
             url: `http://localhost:8080/listings/getByMetaData`,
@@ -75,7 +79,12 @@ class Search extends React.Component {
             data: JSON.stringify(metaData),
             headers:{'Content-Type': 'application/json; charset=utf-8'}
         }).then(res => {
-            console.log(res);
+            const body = {
+                signedIn: signedIn,
+                userData: userData,
+                listingArray: res.data
+            };
+            history.push('/searchresult', body);
         }).catch(error => {
             console.error(error);
             alert('Could not perform search, please try again later');

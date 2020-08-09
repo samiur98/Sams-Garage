@@ -23,6 +23,9 @@ class SearchResult extends React.Component{
         if(this.props.location.state) {
             const listingArray = this.props.location.state.listingArray;
             let next = false;
+            if(listingArray.length === 0) {
+                alert('Search does not match any result');
+            }
             if(listingArray.length > 5) {
                 next = true;
             }

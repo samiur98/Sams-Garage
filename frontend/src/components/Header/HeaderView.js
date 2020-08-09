@@ -20,6 +20,7 @@ function NavbarSignedIn(props) {
             <p onClick = { () => props.onSwitch('/about') }>About</p>
             <p onClick = { () => props.onSwitch('/search') }>Search</p>
             <p onClick = { () => props.onSwitch('/myposts') }>MyPosts</p>
+            <p onClick = { () => props.onSwitch('/addpost') }>AddPost</p>
             <p onClick = { () => props.onSwitch('/changepassword') }>ChangePassword</p>
             <p onClick = { () => props.onSwitch('/changecontactinfo') }>ChangeContactInfo</p>
             <p onClick = { () => props.onSignOut() }>SignOut</p>
