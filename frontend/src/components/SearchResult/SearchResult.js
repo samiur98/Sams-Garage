@@ -69,7 +69,7 @@ class SearchResult extends React.Component{
        if(newPage > 1) {
            newPrev = true;
        }
-       if((newPage * 5) <= this.state.listingArray.length) {
+       if((newPage * 5) < this.state.listingArray.length) {
             newNext = true;
        }
        

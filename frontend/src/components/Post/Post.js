@@ -25,12 +25,13 @@ class Post extends React.Component {
     }
     
     componentDidMount() {
+        console.log(this.props.location.state.listing.metaData);
         if(this.props.location.state.listing) {
             const metaDataArray = this.props.location.state.listing.metaData.split(' ');
             const year = metaDataArray[0];
             const make = metaDataArray[1];
             const model = metaDataArray[2];
-            
+
             this.setState((prevState) => {
                 return {
                     signedIn: this.props.location.state.signedIn,
